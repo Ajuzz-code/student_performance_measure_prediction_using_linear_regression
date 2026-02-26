@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Student Performance{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR (COMMON FOR ALL PAGES) -->
+<header class="navbar">
+    <div class="logo">🎓 STUDENT PERFORM</div>
+    <div class="nav-links">
+        <!--<a href="/">Home</a>-->
+        <a href="/register/">Register</a>
+        <a href="/admin/">Admin</a>
+        <a href="/login/" class="btn login-btn">🔑 Login</a>
+    </div>
+</header>
+
+<!-- ✅ PAGE CONTENT WILL COME HERE -->
+{% block content %}
+{% endblock %}
+
+<!-- ✅ FOOTER (OPTIONAL COMMON) -->
+<footer>
+    Student Performance Prediction System
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+/* RESULT PAGE */
+.result-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.result-card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    text-align: center;
+    width: 380px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.score {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Progress Bar */
+.progress-bar {
+    background: #eee;
+    height: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.progress-fill {
+    background: #20c997;
+    height: 100%;
+    border-radius: 8px;
+}
+
+/* Badges */
+.badge {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.msg {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Buttons */
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+/* Progress Bar */
+.progress-bar {
+    background: #eee;
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* Animated Fill */
+.progress-fill {
+    background: linear-gradient(90deg,#20c997,#4f63c3);
+    height: 100%;
+    width: 0;
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+}

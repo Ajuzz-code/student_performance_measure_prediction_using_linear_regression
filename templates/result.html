@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Student Performance{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR (COMMON FOR ALL PAGES) -->
+<header class="navbar">
+    <div class="logo">🎓 STUDENT PERFORM</div>
+    <div class="nav-links">
+        <!--<a href="/">Home</a>-->
+        <a href="/predict/" class="active">Predict</a>
+        <a href="/profile/">Profile</a>
+          <a href="/history/">History</a>
+        <a href="/logout/" class="btn login-btn"> Logout</a>
+    </div>
+</header>
+
+{% block content %}
+
+<div class="result-wrapper">
+
+    <div class="result-card">
+        <h2> Prediction Result</h2>
+
+        <p class="score">Predicted Score: <strong>{{ outcome }}</strong></p>
+
+        <!-- Progress Bar -->
+       <div class="progress-bar">
+    <div class="progress-fill" data-score="{{ outcome }}"></div>
+</div>
+
+        <!-- Result Badge -->
+       {% if outcome >= 75 %}
+    <span class="badge success">🏆 Distinction</span>
+    <p class="msg">Outstanding performance! 🌟</p>
+
+{% elif outcome >= 60 %}
+    <span class="badge success">🥇 First Class</span>
+    <p class="msg">Excellent performance! Keep it up 👏</p>
+
+{% elif outcome >= 40 %}
+    <span class="badge warning">👍 Pass</span>
+    <p class="msg">Good effort. Try to improve further!</p>
+
+{% else %}
+    <span class="badge danger">⚠ Needs Improvement</span>
+    <p class="msg">Focus more on study hours and attendance.</p>
+{% endif %}
+
+        <div class="result-actions">
+            <a href="/predict/" class="btn btn-primary">Predict Again</a>
+            <a href="/history/" class="btn btn-secondary">View History</a>
+        </div>
+
+    </div>
+
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const bar = document.querySelector(".progress-fill");
+    const score = bar.getAttribute("data-score");
+
+    setTimeout(() => {
+        bar.style.width = score + "%";
+    }, 300);   // small delay for smooth animation
+});
+</script>
+
+{% endblock %}
+<footer>
+    Student Performance Prediction System
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h1>Welcome to the Student Performance Prediction System</h1>
+    <p>Register, login, and predict your performance based on key study indicators.</p>
+
+    <div class="hero-buttons">
+        <a href="/register/" class="btn-primary">🚀 Get Started</a>
+        <a href="/login/" class="btn-secondary">🔐 Login</a>
+    </div>
+</section>
+
+<section class="features">
+    <h2>✨ Key Features</h2>
+
+    <div class="feature-cards">
+        <div class="card">
+            <h3>Student Profiles</h3>
+            <p>Maintain detailed student profiles with academic information.</p>
+        </div>
+
+        <div class="card">
+            <h3>Performance Prediction</h3>
+            <p>Use machine learning models to analyze patterns and predict performance.</p>
+        </div>
+
+        <div class="card">
+            <h3>Data Insights</h3>
+            <p>Understand trends using charts and reports.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

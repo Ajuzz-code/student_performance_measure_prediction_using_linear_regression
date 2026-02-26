@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR (COMMON FOR ALL PAGES) -->
+<header class="navbar">
+    <div class="logo">🎓 STUDENT PERFORM</div>
+    <div class="nav-links">
+        <!--<a href="/">Home</a>-->
+        <a href="/predict/">Predict</a>
+        <a href="/profile/" class="active">Profile</a>
+          <a href="/history/">History</a>
+        <a href="/logout/" class="btn login-btn"> Logout</a>
+    </div>
+</header>
+
+
+{% block content %}
+
+<div class="profile-container">
+
+    <div class="profile-card">
+        <h3 class="profile-title">👤 Student Profile</h3>
+
+        <div class="profile-row">
+            <span>Username:</span>
+            <span>{{ request.user.username }}</span>
+        </div>
+
+      <!--  <div class="profile-row">
+            <span>Full Name:</span>
+            <span>{{ request.user.first_name }} {{ request.user.last_name }}</span>
+        </div> 
+
+        <div class="profile-row">
+            <span>Email:</span>
+            <span>{{ request.user.email }}</span>
+        </div>-->
+
+        <hr>
+
+        <div class="profile-row">
+            <span>Roll Number:</span>
+            <span>{{ profile.roll_no }}</span>
+        </div>
+
+        <div class="profile-row">
+            <span>Course:</span>
+            <span>{{ profile.course.name }}</span>
+        </div>
+
+        <div class="profile-row">
+            <span>Year:</span>
+            <span>{{ profile.year }}</span>
+        </div>
+
+        <div class="profile-row">
+            <span>Contact:</span>
+            <span>{{ profile.contact }}</span>
+        </div>
+
+        <div class="profile-row">
+            <span>Address:</span>
+            <span>{{ profile.address }}</span>
+        </div>
+
+        <div class="profile-actions">
+            <a href="#" class="btn btn-secondary">✏️ Edit Profile</a>
+            <a href="#" class="btn btn-primary">🔑 Change Password</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+<footer>
+    Student Performance Prediction System
+</footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction History</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- 🔵 NAVBAR -->
+<header class="navbar">
+    <div class="logo">🎓 STUDENT PERFORM</div>
+    <div class="nav-links">
+        <a href="/predict/">Predict</a>
+        <a href="/profile/">Profile</a>
+        <a href="/history/" class="active">History</a>
+        <a href="/logout/" class="btn login-btn">Logout</a>
+    </div>
+</header>
+
+<!-- 📦 CONTENT -->
+<div class="history-container mt-4">
+
+    <!-- 📋 TABLE CARD -->
+    <div class="card3">
+        <h3>📊 Your Prediction History</h3>
+
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Predicted Grade</th>
+                    <th>Probability (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in predictions %}
+                <tr>
+                    <td>{{ p.date|date:"Y-m-d H:i" }}</td>
+                    <td>{{ p.grade }}</td>
+                    <td>{{ p.probability }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No prediction history available</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 📈 GRAPH CARD -->
+    <div class="card3 mt-4">
+        <h3>Prediction Trend</h3>
+      <div class="chart-wrapper" style="height: 300px;">
+        <canvas id="predictionChart"></canvas>
+    </div>
+</div>
+
+
+<!-- 📊 CHART SCRIPT -->
+<script>
+const ctx = document.getElementById('predictionChart');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ dates|safe }},
+        datasets: [{
+            label: 'Prediction Probability (%)',
+            data: {{ probabilities|safe }},
+            fill: true,
+            tension: 0.4,
+            borderWidth: 2
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+         plugins: {
+            legend: {
+                display: true
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
+});
+</script>
+
+<footer>
+    Student Performance Prediction System
+</footer>
+
+</body>
+</html>
